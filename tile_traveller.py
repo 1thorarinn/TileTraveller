@@ -8,6 +8,7 @@
 
 
 def available_directions(current_tile:str) -> str:
+    # Switch statement
     return {
         "1,1": "n",
         "1,2": "nes",
@@ -23,6 +24,7 @@ def available_directions(current_tile:str) -> str:
 def print_available_directions(directions:str) -> str:
     available_directions = ''
     for chr in directions:
+            # switch statement
             available_directions += {
                 'n': '(N)orth',
                 's': '(S)outh',
@@ -31,8 +33,7 @@ def print_available_directions(directions:str) -> str:
             }[chr.lower()]
             if chr != directions[-1] and available_directions != '':
                 available_directions += ' or '
-   
-    print("You can travel: {}".format(available_directions))
+    print("You can travel: {}.".format(available_directions))
 
 def traverse(current_tile:str, direction:str) -> str:
     # splitta
@@ -56,7 +57,7 @@ run = True
 current_tile = "1,1"
 while run:
     print_available_directions( available_directions(current_tile) )
-    direction = input("Direction: ")
+    direction = input("Direction: ").lower()
     if direction in available_directions(current_tile):
         current_tile = traverse(current_tile, direction)
     else: 
