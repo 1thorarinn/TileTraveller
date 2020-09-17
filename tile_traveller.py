@@ -23,16 +23,16 @@ def available_directions(current_tile:str) -> str:
 def print_available_directions(directions:str) -> str:
     available_directions = ''
     for chr in directions:
-        available_directions += {
-            'n': '(N)orth ',
-            's': '(S)outh ',
-            'e': '(E)ast ',
-            'w': '(W)est',
-        }[chr.lower()]
-    test = available_directions.split(' ');
-    for i in range(len(test)):
-        print(test[i])
-    print("You can travel: {}".format(available_directions.replace(' ', ' or ')))
+            available_directions += {
+                'n': '(N)orth',
+                's': '(S)outh',
+                'e': '(E)ast',
+                'w': '(W)est',
+            }[chr.lower()]
+            if chr != directions[-1] and available_directions != '':
+                available_directions += ' or '
+   
+    print("You can travel: {}".format(available_directions))
 
 def traverse(current_tile:str, direction:str) -> str:
     # splitta
@@ -64,4 +64,3 @@ while run:
     if check_tile_for_victory(current_tile):
         print("Victory!")
         run = False
-    print(current_tile)
