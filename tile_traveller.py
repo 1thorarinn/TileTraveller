@@ -8,7 +8,7 @@
 
 
 def available_directions(current_tile:str) -> str:
-     return {
+    return {
         '1,1': 'n',
         '1,2': 'nes',
         '1,3': 'se',
@@ -16,6 +16,7 @@ def available_directions(current_tile:str) -> str:
         '1,5': 'nes',
         '1,6': 'nes',
     }[current_tile]
+    
 
 def print_available_directions(directions:str) -> str:
     available_directions = ''
@@ -29,7 +30,6 @@ def print_available_directions(directions:str) -> str:
     print("You can travel: {}".format(available_directions))
 
 def traverse(current_tile:str, direction:str) -> str:
-    if direction in available_directions(current_tile):
         # splitta
         tpart = current_tile.split(',')
         if direction.lower() == 'n':
@@ -41,16 +41,18 @@ def traverse(current_tile:str, direction:str) -> str:
         if direction.lower() == 'w':
             tpart[0] = str(int(tpart[0]) - 1)
         return tpart[0] + ',' + tpart[1]
-    else: 
-        print("nope")
-        return current_tile
+   
 
 run = True
 current_tile = "1,1"
 while run:
     print( print_available_directions( available_directions(current_tile) ) )
     direction = input("Direction: ")
-    current_tile = traverse(current_tile, direction)
+    if direction in available_directions(current_tile):
+        current_tile = traverse(current_tile, direction)
+    else: 
+        print("nope")
+        return current_tile
     print(current_tile)
     
     
