@@ -27,8 +27,11 @@ def print_available_directions(directions:str) -> str:
             'n': '(N)orth ',
             's': '(S)outh ',
             'e': '(E)ast ',
-            'w': '(W)est ',
+            'w': '(W)est',
         }[chr.lower()]
+    test = available_directions.split(' ');
+    for i in range(len(test)):
+        print(test[i])
     print("You can travel: {}".format(available_directions.replace(' ', ' or ')))
 
 def traverse(current_tile:str, direction:str) -> str:
